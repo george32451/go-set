@@ -1,7 +1,21 @@
 package set
 
-import "fmt"
+type Set struct {
+	root *Node
+}
 
-func Hi(name string) string {
-	return fmt.Sprintf("Hello, %s", name)
+func (s *Set) Add(value string) error {
+	if s.root == nil {
+		s.root = &Node{val: value}
+		return nil
+	}
+
+	return s.root.Add(value)
+}
+
+func (s *Set) Size() int {
+	if s.root == nil {
+		return 0
+	}
+	return 1 + s.root.left.Size() + s.root.right.Size()
 }

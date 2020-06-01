@@ -1,12 +1,12 @@
 package set
 
 type Set struct {
-	root *Node
+	root *node
 }
 
 func (s *Set) Add(value string) error {
 	if s.root == nil {
-		s.root = &Node{val: value}
+		s.root = &node{val: value}
 		return nil
 	}
 

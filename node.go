@@ -2,20 +2,20 @@ package set
 
 import "errors"
 
-type Node struct {
+type node struct {
 	val   string
-	left  *Node
-	right *Node
+	left  *node
+	right *node
 }
 
-func (n *Node) Size() int {
+func (n *node) Size() int {
 	if n == nil {
 		return 0
 	}
 	return 1 + n.left.Size() + n.right.Size()
 }
 
-func (n *Node) Add(value string) error {
+func (n *node) Add(value string) error {
 
 	if n == nil {
 		return errors.New("tree is nil")
@@ -27,7 +27,7 @@ func (n *Node) Add(value string) error {
 
 	if value < n.val {
 		if n.left == nil {
-			n.left = &Node{val: value}
+			n.left = &node{val: value}
 			return nil
 		}
 		return n.left.Add(value)
@@ -35,7 +35,7 @@ func (n *Node) Add(value string) error {
 
 	if value > n.val {
 		if n.right == nil {
-			n.right = &Node{val: value}
+			n.right = &node{val: value}
 			return nil
 		}
 		return n.right.Add(value)
